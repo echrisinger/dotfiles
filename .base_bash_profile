@@ -1,0 +1,39 @@
+alias bash_profile='vim ~/.bash_profile'
+
+# initialize bash_aliases
+test -f ~/.bash_aliases || touch ~/.bash_aliases
+source ~/.bash_aliases
+
+# lets keep environment vars together
+test -d ~/.env/ || mkdir ~/.env
+for f in ~/.env/*; do source $f; done
+
+# formatting prompt
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+fmt_git_branch() {
+  if [ -z $(parse_git_branch) ]
+  then
+    echo ''
+  else
+    echo "($(parse_git_branch)) "
+  fi
+}
+
+PS1='\[\033[01;32m\]\u\[\033[00m\]: $(fmt_git_branch)\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+# history
+shopt -s histappend
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+export HISTCONTROL=ignoredups:erasedups
+export PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
+
+# editors
+export EDITOR=vim
+export GIT_EDITOR=vim
+
+# load the default profile first
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
+

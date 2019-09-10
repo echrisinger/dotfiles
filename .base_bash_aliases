@@ -1,0 +1,39 @@
+alias aliases='vim ~/.bash_aliases'
+alias bash_aliases='aliases'
+
+# colors
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias la='ls -A'
+alias ls='ls -G'
+alias ll='ls -la'
+alias l.='ls -d .* --color=auto'
+
+alias gpush='git push origin $(parse_git_branch)'
+alias gpushf='git push origin $(parse_git_branch) --force'
+alias gpullm='git pull origin master'
+alias gpullb='git pull origin $(parse_git_branch)'
+alias gmaster='git checkout master'
+alias gcheck='git checkout'
+alias gcheckm='git checkout master'
+alias gcomm='git commit'
+alias gdiff='git diff'
+alias gadd='git add'
+alias greset='git reset'
+alias greseth='git reset --hard'
+alias gresets='git reset --soft HEAD^; git reset'
+alias glog='git log'
+alias gstash='git stash'
+alias gstatus='git status'
+alias gfetch='git fetch'
+alias pr='hub pull-request'
+
+# other projects, useful shortcuts
+alias desktop='cd ~/Desktop'
+alias home='cd ~'
+alias ..='cd ..'
+alias ...='cd ..; cd ..'
+alias ....='cd ..; cd ..; cd ..'
+alias o=open
+
