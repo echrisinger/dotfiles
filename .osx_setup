@@ -32,6 +32,7 @@ sudo mv /usr/bin/git /usr/bin/git-apple
 brew install git
 brew link --force git
 git --version
+git config --global core.excludesfile ${pwd}/.global_gitignore
 
 #setup autocompletion
 cp /usr/local/etc/bash_completion.d/git-completion.bash ~
