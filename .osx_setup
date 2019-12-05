@@ -2,6 +2,8 @@ set -euxo pipefail
 
 echo 'source ${pwd}/.base_bash_profile' >> ~/.bash_profile
 echo 'source ${pwd}/.base_bash_aliases' >> ~/.bash_profile
+echo 'source ${pwd}/.base_bash_autocompletion' >> ~/.bash_profile
+echo 'source ${pwd}/.global_gitignore' >> ~/.bash_profile
 
 # install brew
 echo "installing homebrew"
