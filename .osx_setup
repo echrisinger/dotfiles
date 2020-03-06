@@ -123,3 +123,6 @@ echo "  ~/ directories (check the contents)"
 
 echo "setup:"
 echo "  awscli -- add the aws runtime to PATH, likely from ~/Library/Python/:version/bin and then run `aws configure`"
+
+brew install bash-completion
+echo "[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion" >> ./.base_bash_autocompletion 

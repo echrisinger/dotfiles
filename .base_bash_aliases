@@ -27,6 +27,8 @@ alias glog='git log'
 alias gstash='git stash'
 alias gstatus='git status'
 alias gfetch='git fetch'
+alias gbr="git branch | grep -v "master" | xargs git branch -D"
+
 alias pr='hub pull-request'
 
 # other projects, useful shortcuts
@@ -37,3 +39,5 @@ alias ...='cd ..; cd ..'
 alias ....='cd ..; cd ..; cd ..'
 alias o=open
 
+# process management
+alias kill_last='cat $HISTFILE | grep pkill | eval $(tail -n 1)'
