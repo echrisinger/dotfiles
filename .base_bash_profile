@@ -6,7 +6,7 @@ source ~/.bash_aliases
 
 # lets keep environment vars together
 test -d ~/.env/ || mkdir ~/.env
-for f in ~/.env/*; do source $f; done
+#for f in ~/.env/*; do source $f; done
 
 # formatting prompt
 parse_git_branch() {
