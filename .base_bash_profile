@@ -34,6 +34,9 @@ export PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
 export EDITOR=vim
 export GIT_EDITOR=vim
 
+# git setup
+git config --global help.autocorrect 1
+
 # load the default profile first
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
 
