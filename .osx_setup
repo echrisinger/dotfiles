@@ -1,9 +1,8 @@
 set -euxo pipefail
 
-echo 'source ${pwd}/.base_bash_profile' >> ~/.bash_profile
-echo 'source ${pwd}/.base_bash_aliases' >> ~/.bash_profile
-echo 'source ${pwd}/.base_bash_autocompletion' >> ~/.bash_profile
-echo 'source ${pwd}/.global_gitignore' >> ~/.bash_profile
+echo "source $(pwd)/.base_bash_profile" >> ~/.bash_profile
+echo "source $(pwd)/.base_bash_aliases" >> ~/.bash_profile
+echo "source $(pwd)/.base_bash_autocompletion" >> ~/.bash_profile
 
 # install brew
 echo "installing homebrew"
@@ -30,13 +29,14 @@ case $yn in
 esac
 
 # uninstall apple git
-sudo mv /usr/bin/git /usr/bin/git-apple
 brew install git
+echo '# for aliasing brew installed git over git; makes local files searched first'
+echo 'export PATH="/usr/local/bin:${PATH}"' >> ~/.bash_profile
 brew link --force git
 git --version
-git config --global core.excludesfile ${pwd}/.global_gitignore
+git config --global core.excludesfile $(pwd)/.global_gitignore
 
-#setup autocompletion
+# setup autocompletion
 cp /usr/local/etc/bash_completion.d/git-completion.bash ~
 echo '# git autocomplete' >> ~/.bash_profile
 echo 'test -f ~/.git-completion.bash && . $_' >> ~/.bash_profile
@@ -50,15 +50,6 @@ echo "setting default as python 3"
 echo "alias python=/usr/local/bin/python3" >> ~/.bash_aliases
 echo "alias pip=/usr/local/bin/pip3" >> ~/.bash_aliases
 
-# install java
-brew cask install java
-
-# install ruby, rails, puma
-echo '# ruby'
-gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-\curl -sSL https://get.rvm.io | bash -s stable --ruby=jruby --gems=rails,puma
-echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> ~/.bash_profile # Load RVM into a shell session *as a function*
-
 # install golang
 echo '# golang'
 echo 'export GOPATH="${HOME}/.go"' >> ~/.bash_profile
@@ -68,8 +59,7 @@ test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 brew install go
 go get golang.org/x/tools/cmd/godoc
-go get github.com/golang/lint/golint
-
+go get golang.org/x/lint/golint
 
 # install AWS cli with pip3
 pip3 install awscli --upgrade --user
@@ -77,21 +67,12 @@ pip3 install awscli --upgrade --user
 # install UI apps
 echo "# apps" >> ~/.bash_aliases
 
-# install slack
-brew cask install slack
-echo  "alias slack='open /Applications/Slack.app/'" >> ~/.bash_aliases
-
 # install flux
 brew cask install flux
 echo "alias flux='open /Applications/Flux.app/'" >> ~/.bash_aliases
 
-echo "opening flux" 
-source ~/.bash_aliases
-./flux
-
 # install vscode
 brew update                           # Fetch latest version of homebrew and formula.
-brew tap caskroom/cask                # Tap the Caskroom/Cask repository from Github using HTTPS.
 brew search visual-studio-code        # Searches all known Casks for a partial or exact match.
 brew cask info visual-studio-code     # Displays information about the given Cask
 brew cask install visual-studio-code  # Install the given cask.
@@ -107,7 +88,7 @@ echo "alias spotify='open /Applications/Spotify.app/'" >> ~/.bash_aliases
 
 # install boostnote
 brew cask install boostnote
-echo "alias boostnote='open /Applications/Spotify.app/'" >> ~/.bash_aliases
+echo "alias boostnote='open /Applications/Boostnote.app/'" >> ~/.bash_aliases
 
 # install docker
 brew cask install docker
