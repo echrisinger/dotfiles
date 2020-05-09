@@ -7,7 +7,10 @@ echo "source $(pwd)/.base_bash_autocompletion" >> ~/.bash_profile
 # make Projects directory, and add dynamic aliasing for all entries
 mkdir ~/Projects
 echo \
-"for dir in ~/Projects/*/
+"
+alias Projects='cd ~/Projects'
+alias projects='Projects'
+for dir in ~/Projects/*/
 do
     cmd=${dir%*/}
     alias ${cmd##*/}="cd $dir"
