@@ -4,6 +4,15 @@ echo "source $(pwd)/.base_bash_profile" >> ~/.bash_profile
 echo "source $(pwd)/.base_bash_aliases" >> ~/.bash_profile
 echo "source $(pwd)/.base_bash_autocompletion" >> ~/.bash_profile
 
+# make Projects directory, and add dynamic aliasing for all entries
+mkdir ~/Projects
+echo \
+"for dir in ~/Projects/*/
+do
+    cmd=${dir%*/}
+    alias ${cmd##*/}="cd $dir"
+done" >> ~/.bash_profile
+
 # install brew
 echo "installing homebrew"
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -93,6 +102,10 @@ echo "alias boostnote='open /Applications/Boostnote.app/'" >> ~/.bash_aliases
 # install docker
 brew cask install docker
 echo "alias docker='open /Applications/Docker.app/'" >> ~/.bash_aliases
+
+# install anki
+brew cask install anki
+echo "alias anki='open /Applications/Anki.app/'" >> ~/.bash_aliases
 
 echo "now there are some manual things to setup, potentially"
 echo "installs:"
