@@ -21,7 +21,9 @@ fmt_git_branch() {
   fi
 }
 
-PS1='\[\033[01;32m\]\u\[\033[00m\]: $(fmt_git_branch)\[\033[01;34m\]\w\[\033[00m\]\$ '
+PS1='\[\033[01;31m\]${USER:0:4}\[\033[00m\]: $(fmt_git_branch)\[\033[01;32m\]\w\[\033[00m\]\$ '
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # history
 shopt -s histappend
