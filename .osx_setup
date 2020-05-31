@@ -106,6 +106,10 @@ echo "alias boostnote='open /Applications/Boostnote.app/'" >> ~/.bash_aliases
 brew cask install docker
 echo "alias docker='open /Applications/Docker.app/'" >> ~/.bash_aliases
 
+# install karabiner-elements
+brew cask install karabiner-elements
+echo "alias karabiner='open /Applications/Karabiner-Elements.app/'" >> ~/.bash_aliases
+
 # install hub
 brew install hub
 echo "alias pr='hub pull-request'" >> ~/.bash_aliases
