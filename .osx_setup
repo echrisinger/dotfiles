@@ -102,9 +102,13 @@ echo "alias spotify='open /Applications/Spotify.app/'" >> ~/.bash_aliases
 brew cask install boostnote
 echo "alias boostnote='open /Applications/Boostnote.app/'" >> ~/.bash_aliases
 
+# install hazel
+brew cask install hazel
+echo "alias hazel='open /Applications/Hazel.app/'" >> ~/.bash_aliases
+
 # install docker
 brew cask install docker
-echo "alias docker='open /Applications/Docker.app/'" >> ~/.bash_aliases
+echo "alias docker-desktop='open /Applications/Docker.app/'" >> ~/.bash_aliases
 
 # install karabiner-elements
 brew cask install karabiner-elements
