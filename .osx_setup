@@ -67,6 +67,7 @@ echo '# golang'
 echo 'export GOPATH="${HOME}/.go"' >> ~/.bash_profile
 echo 'export GOROOT="$(brew --prefix golang)/libexec"' >> ~/.bash_profile
 echo 'export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"' >> ~/.bash_profile
+source ~/.bash_profile
 test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
 brew install go
