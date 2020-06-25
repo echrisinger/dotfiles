@@ -90,3 +90,4 @@ function _makefile_targets {
 complete -F _makefile_targets make
 
 
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
