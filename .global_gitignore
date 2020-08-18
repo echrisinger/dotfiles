@@ -1,2 +1,3 @@
 *.vscode
 *.rdb
+stale_outputs_checked
