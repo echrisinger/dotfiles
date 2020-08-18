@@ -11,23 +11,31 @@ alias ll='ls -la'
 alias l.='ls -d .* --color=auto'
 
 get_master_branch() {
-  cat ~/.git/master_branches.txt | awk -v pwdvar="$(pwd)" '$1 ~ pwdvar {print $2}'
+  alt_master=$(cat ~/.git/master_branches.txt | awk -v pwdvar="$(pwd)" '$1 ~ pwdvar {print $2}')
+  if [ -z "$alt_master" ]
+  then
+    "master"
+  else
+    echo "$alt_master"
+  fi
 }
 
 alias gclone='git clone'
 alias gpush='git push origin $(parse_git_branch)'
 alias gpushf='git push origin $(parse_git_branch) --force'
-alias gpullm='git pull origin master'
 alias gpullb='git pull origin $(parse_git_branch)'
 alias gcheck='git checkout'
+alias gpullm='git pull origin $(get_master_branch)'
 alias gcheckm='git checkout $(get_master_branch)'
 alias gsetm='mkdir -p ~/.git; echo "$(pwd)$1" >> ~/.git/master_branches.txt'
+
 alias gcomm='git commit'
 alias gdiff='git diff'
 alias gadd='git add'
 alias greset='git reset'
 alias greseth='git reset --hard'
 alias gresets='git reset --soft HEAD^; git reset'
+
 alias glog='git log'
 alias gstash='git stash'
 alias gstatus='git status'
