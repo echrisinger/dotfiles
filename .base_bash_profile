@@ -12,6 +12,7 @@ for f in ~/.env/*; do source $f; done
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
+
 fmt_git_branch() {
   if [ -z $(parse_git_branch) ]
   then

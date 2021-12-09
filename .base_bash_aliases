@@ -14,7 +14,7 @@ get_master_branch() {
   alt_master=$(cat ~/.git/master_branches.txt | awk -v pwdvar="$(pwd)" '$1 ~ pwdvar {print $2}')
   if [ -z "$alt_master" ]
   then
-    "master"
+    echo "main"
   else
     echo "$alt_master"
   fi
@@ -52,3 +52,6 @@ alias o=open
 
 # process management
 alias kill_last='cat $HISTFILE | grep pkill | eval $(tail -n 1)'
+
+# mark application as safe
+alias mark_safe='xattr -d com.apple.quarantine $1'
